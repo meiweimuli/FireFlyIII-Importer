@@ -79,3 +79,12 @@ jobs:
           cache-to: type=gha,mode=max
           # Uncomment the following line to build for multiple architectures
           # platforms: linux/amd64,linux/arm64
+
+      # Update Docker Hub repository description from README.md
+      - name: Update Docker Hub Description
+        if: github.event_name != 'pull_request'
+        uses: peter-evans/dockerhub-description@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: ${{ env.IMAGE_NAME }}
