@@ -5,7 +5,7 @@
 ### Build the Image
 
 ```bash
-docker build -t firefly-importer .
+docker build -t kuons/fireflyiii-importer .
 ```
 
 ### Run with Docker
@@ -15,7 +15,7 @@ docker run -d \
   --name firefly-importer \
   -p 8080:8080 \
   -v $(pwd)/data:/app/data \
-  firefly-importer
+  kuons/fireflyiii-importer
 ```
 
 Access the app at: **http://localhost:8080**
@@ -33,7 +33,7 @@ services:
   firefly-importer:
     build: .
     # Or use a pre-built image:
-    # image: firefly-importer:latest
+    # image: kuons/fireflyiii-importer:latest
     container_name: firefly-importer
     ports:
       - "8080:8080"
@@ -98,7 +98,7 @@ docker run --network firefly-net --name firefly-iii ...
 docker run --network firefly-net \
   -p 8080:8080 \
   -v $(pwd)/data:/app/data \
-  firefly-importer
+  kuons/fireflyiii-importer
 ```
 
 Then use `http://firefly-iii:8080` as the Firefly URL in settings.
@@ -108,7 +108,7 @@ Then use `http://firefly-iii:8080` as the Firefly URL in settings.
 ```bash
 docker run --network host \
   -v $(pwd)/data:/app/data \
-  firefly-importer
+  kuons/fireflyiii-importer
 ```
 
 Then use `http://localhost:8080` (or your Firefly III's actual address).

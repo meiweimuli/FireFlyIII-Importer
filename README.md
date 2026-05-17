@@ -26,8 +26,8 @@ The easiest way to run FireFly III Importer is via Docker.
 version: "3.8"
 services:
   firefly-importer:
-    image: firefly-importer:latest # Or build from source
-    build: .
+    image: kuons/fireflyiii-importer:latest # Or build from source
+    # build: .
     ports:
       - "8080:8080"
     volumes:
