@@ -8,7 +8,7 @@
           <el-upload
             class="upload-demo"
             drag
-            action="http://localhost:8080/api/upload"
+            :action="`${API_BASE}/upload`"
             :on-success="handleUploadSuccess"
             :on-error="handleUploadError"
             :show-file-list="false"
@@ -511,7 +511,7 @@ import RuleGroup from './components/RuleGroup.vue'
 
 import RuleNode from './components/RuleNode.vue'
 
-const API_BASE = 'http://localhost:8080/api'
+const API_BASE = import.meta.env.DEV ? 'http://localhost:8080/api' : '/api'
 
 const activeTab = ref('import')
 const config = ref({
