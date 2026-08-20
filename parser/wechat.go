@@ -100,7 +100,11 @@ func ParseWeChatXLSX(data []byte, externalIdField string) ([]models.Transaction,
 		if len(row) > timeIdx {
 			timeStr = strings.TrimSpace(row[timeIdx])
 		}
-		t, err := time.Parse("2006-01-02 15:04:05", timeStr)
+		loc, err := time.LoadLocation("Asia/Shanghai")
+		if err != nil {
+			loc = time.FixedZone("CST", 8*3600)
+		}
+		t, err := time.ParseInLocation("2006-01-02 15:04:05", timeStr, loc)
 		if err != nil {
 			t = time.Now()
 		}
